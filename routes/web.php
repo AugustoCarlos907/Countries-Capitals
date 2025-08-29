@@ -1,7 +1,10 @@
 <?php
 
+use App\Http\Controllers\Maincontroller;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    echo 'HELLO WORLD';
-});
+
+
+// Route::get('/show_data', [Maincontroller::class, 'showData']);
+
+Route::view('/', 'home');
