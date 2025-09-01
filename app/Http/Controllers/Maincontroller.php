@@ -157,5 +157,33 @@ class Maincontroller extends Controller
             'currentQuestion' => $current_question ,
             'total_questions' => session('total_questions'),
         ];
+
+        return view('answer_result', $data);
+    }
+
+    public function nextQuestion(){
+
+        $current_question = session('current_question');
+        $total_questions = session('total_questions');
+
+        //check if game is over
+        if($current_question < $total_questions){
+            $current_question++;
+            session()->put('current_question', $current_question);
+            return redirect()->route('game');
+        } else {
+
+            //game over
+            return redirect()->route('show_results');
+        }
+    }
+
+    public function showResults(){
+
+        // $correct_answers = session('correct_answers');
+        // $wrong_answers = session('wrong_answers');
+        // $total_questions = session('total_questions');
+
+     
     }
 }
